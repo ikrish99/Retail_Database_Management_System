@@ -1,0 +1,49 @@
+<html data-ng-app="myApp">
+<head >
+<title>My App</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="app.css">
+
+</head>
+<body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+<script src="container.js"></script>
+
+<div class="div" data-ng-controller="myCon">
+<center>
+<h3 class="h3">Retail Database Management</h3>
+<br>
+<table class="table">
+	<tr>
+		<th class="th">Name</th>
+		<th class="th">Quantity</th>
+		<th class="th">Update Quantity Value</th>
+		<th class="th">Remove Values</th>
+	</tr>
+	<tr data-ng-repeat= "l in det">
+		<td>{{l.name}}</td>
+		<td>{{l.quantity}}</td>
+		<td><button class="button" data-ng-click="update(l._id,l.name,l.quantity)">Edit</button></td>
+		<td><button class="button" data-ng-click="remove(l.name)">Remove</button></td>
+	</tr>
+</table>
+</center>
+<br><br>
+<form>
+	<center>
+		<h4>Enter / update the details below </h4>
+		<br>
+		Name: &nbsp; &nbsp; &nbsp;<input class="input" type="text" ng-model=prodName>
+		<br>
+		Quantity: &nbsp;<input class="input" type="text" ng-model=qty>
+		<br><br>
+		<button class="button" data-ng-click="add()">Add</button>&nbsp;
+		<button class="button" data-ng-click="dbupdate()">Update</button>&nbsp;
+		<button class="button" data-ng-click="clean()">Clear</button>
+	</center>
+</form>
+</div>
+</body>
+</html>
