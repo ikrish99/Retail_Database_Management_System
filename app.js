@@ -7,8 +7,15 @@ var bodyParse = require("body-parser");
 app.use(bodyParse.json());
 app.use(e.static(__dirname + '/public'));
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Methods",'POST, GET, PUT, DELETE, OPTIONS');
+  next();
+});
+
 //MongoDB connection
-dbConnection.connect("mongodb://localhost:27017/retailDB", function(error, db)
+dbConnection.connect("mongodb://admin:YNBBUPEEQYYUCGSK@sl-us-south-1-portal.1.dblayer.com:15432,sl-us-south-1-portal.0.dblayer.com:15432/admin?ssl=true", function(error, db)
 {
 	if(!error) 
 	{
@@ -70,7 +77,7 @@ dbConnection.connect("mongodb://localhost:27017/retailDB", function(error, db)
 	}
 })
 
-app.listen(4400,function(){
-		console.log("Server is waiting on http://localhost:4400/");
+app.listen(process.env.PORT,function(){
+		//console.log("Server is waiting on http://localhost:4400/");
 });
 
