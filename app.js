@@ -5,7 +5,8 @@ var dbConnection = require("mongodb").MongoClient;
 var bodyParse = require("body-parser");
 
 app.use(bodyParse.json());
-app.use(e.static(__dirname+""));
+app.use(e.static(__dirname + '/public'));
+
 //MongoDB connection
 dbConnection.connect("mongodb://localhost:27017/retailDB", function(error, db)
 {
